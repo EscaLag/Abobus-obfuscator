@@ -263,7 +263,7 @@ if %‎% neq 4 exit&{anti_detect('cmd')} /c {anti_detect('exit')} 32\n'''
     
     name = file[:-4]+'-obf'
     with open(name+'.bat', 'w', encoding="utf-8", errors='ignore') as f:
-    	f.write(res[:-4])
+    	f.write(res)
 
     if status_china_symbol == True:
         ok = getcwd()
@@ -272,7 +272,8 @@ if %‎% neq 4 exit&{anti_detect('cmd')} /c {anti_detect('exit')} 32\n'''
         subprocess.run(bruh1, stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
         subprocess.run(bruh2, stdout=subprocess.PIPE,shell=True, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
 
-    input('ssuccful')
+    print('\nsuccessful!')
+    system('pause >nul')
 
 if __name__ == '__main__':
     main()
