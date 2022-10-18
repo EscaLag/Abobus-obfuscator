@@ -81,7 +81,7 @@ def easy_anti_detect(random_goto: str):
     return ''.join(goto)
 
 
-# обфусцирует символы в переменную
+# letter obfuscation
 def obf_charagter(content: str):
     alphabet = ['J', 'g', 'i', 'g', 't', 'G', 'X', 'z', 's', 'w', 'b', 'h', 'm', 'u', 'S', 'H', 'I', 'O', 'A', '2', '3', '0']
     shuffle(alphabet)
@@ -116,7 +116,7 @@ def obf_charagter(content: str):
     result = '\n'.join(result)
     return f"""{anti_detect('set')} ‎ඞ‎={anti_detect(''.join(str(sym) for sym in alphabet))}\n{result}"""
 
-#рандомные красные линии
+#random newline
 def random_newline(content: str):
     content = content.split('\n')
     result = ''
@@ -193,7 +193,7 @@ def main():
 
     content = open(file, 'rb').read().decode("utf-8")
     
-    #очистка от пустых ячеек
+    #clearing empty cells in a list
     content = content.split('\r\n')
     content = list(filter(None, content))
     
@@ -212,12 +212,12 @@ def main():
 
 
     result = f'''{anti_detect('@echo')} {anti_detect('off')}&{anti_detect('set')} /a ‎=1 >nul&{anti_detect('cls')}&&{anti_detect('set')} {anti_detect(name_file)}=%0\n
-;SE^T __author__=EscaLag
-;SE^T __github__=LINK\n
+;SE^T "__author__=EscaLag"
+;SE^T "__github__=github.com/EscaLag/Abobus-obfuscator"\n
 {anti_detect('find')} >nul 2>&1&&for /l %%c in (.)do ({anti_detect('echo')} {anti_detect('ABOBUS')} {anti_detect('OBFUSCATION')})||{anti_detect('exit')}
 {anti_detect('set')} /a ‎+=1 >nul &for /l %%i in (1 1 1) do for %%a in ( {anti_detect(name_file)} {anti_detect('__author__')} {anti_detect('__github__')})do if {anti_detect('not')} {anti_detect('defined')} %%a {anti_detect('exit')}
 {anti_detect('set')} /a ‎+=1 >nul &for %%a in ( {anti_detect('set')} {anti_detect('goto')} {anti_detect('echo')} {anti_detect('pause')})do {anti_detect('findstr')} /L /I %%a %{name_file}%&&{anti_detect('exit')}
-{anti_detect('set')} /a ‎+=1 >nul &if %__aUtHoR__% neq {anti_detect('EscaLag')} ({anti_detect('exit')})&if "%__gIThuB__%" neq "{anti_detect('LINK')}" ({anti_detect('exit')})
+{anti_detect('set')} /a ‎+=1 >nul &if %__aUtHoR__% neq {anti_detect('EscaLag')} ({anti_detect('exit')})&if "%__gIThuB__%" neq "{anti_detect('github.com/EscaLag/Abobus-obfuscator')}" ({anti_detect('exit')})
 {anti_detect('find')} >nul 2>&1&&for /l %%c in (.)do ({anti_detect('echo')} {anti_detect('ABOBUS')} {anti_detect('OBFUSCATION')})||{anti_detect('exit')}
 if %‎% neq 4 exit&{anti_detect('cmd')} /c {anti_detect('exit')} 32\n'''
 
