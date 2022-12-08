@@ -114,7 +114,8 @@ def obf_charagter(content: str):
 
                 result.append(temp_result)
     result = '\n'.join(result)
-    return f"""{anti_detect('set')} ‎ඞ‎={anti_detect(''.join(str(sym) for sym in alphabet))}\n{result}"""
+    return '{0} ‎ඞ‎={1}\n{2}'.format(anti_detect('set'),
+        anti_detect(''.join(str(sym) for sym in alphabet)), result)
 
 #random newline
 def random_newline(content: str):
@@ -128,7 +129,7 @@ def random_space(content: str):
     content = content.split('\n')
     res = ''
     for i in content:
-        res += f"{' ' * randint(70,300)} {i}\n"
+        res += '{0} {1}\n'.format(' ' * randint(70,300), i)
     return res
 
 
@@ -141,7 +142,7 @@ def lower_upper_character(content: str, antidetect: bool):
 
 def random_chunk(content: str):
     content = content.split('\n')
-    obf = ["i", "l"]
+    obf = ['i', 'l']
     #obf = ['ﭲ', 'س', 'ﺖ', 'ﮚ', 'ﮱ', 'ﮕ', 'ﯔ', 'ت', 'ﮢ', 'ﯤ', 'ﺼ', 'ك', 'ﻁ', 'ﺹ', 'ﭫ']
     res = ''
     random_chunk = []
@@ -157,16 +158,16 @@ def random_chunk(content: str):
     return res
 
 def random_if(content :str, name_file :str):
-    obf = ["i", "l"]
+    obf = ['i', 'l']
     content = content.split('\n')
-    random_ifs = ['if 1 EQU 0 (@exit) else ', 'if 1 EQU 1 ', 'if 5 LsS 10 ', f'if exist %{name_file}% ', 'for /l %%y in (1,1,1) do ']
+    random_ifs = ['if 1 EQU 0 (@exit) else ', 'if 1 EQU 1 ', 'if 5 LsS 10 ', 'if exist %{0}% '.format(name_file), 'for /l %%y in (1,1,1) do ']
     result = []
     for i in range(len(content)):
         cont = content[i]
         if cont.lower().startswith('(') or cont.lower().startswith(')'):
             result.append(cont)
         elif cont.lower().startswith(':'):
-            result.append(f':{easy_anti_detect(cont[1:])}  {anti_detect("".join([str(choice(obf)) for _ in range(11)]))}   {anti_detect("".join([str(choice(obf)) for _ in range(11)]))}\n')
+            result.append(f":{easy_anti_detect(cont[1:])}  {anti_detect(''.join([str(choice(obf)) for _ in range(11)]))}   {anti_detect(''.join([str(choice(obf)) for _ in range(11)]))}\n")
         else:
             result.append(choice(random_ifs) + cont)
     
@@ -188,16 +189,16 @@ def main():
     print(logo)
     file = input('Drag your Batch file: ')
     if not file.strip() or not isfile(file):
-        exit("This file does not exist!")
+        exit('This file does not exist!')
 
 
-    content = open(file, 'rb').read().decode("utf-8")
+    content = open(file, 'rb').read().decode('utf-8')
     
     #clearing empty cells in a list
     content = content.split('\r\n')
     content = list(filter(None, content))
     
-    obf = ["i", "l"]
+    obf = ['i', 'l']
     name_file = ''.join([str(choice(obf)) for _ in range(11)])
     
     content.append('exit')
